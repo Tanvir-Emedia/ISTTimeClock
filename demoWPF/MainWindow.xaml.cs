@@ -31,7 +31,10 @@ namespace demoWPF
             TimeZoneInfo INDIAN_ZONE = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
             string indianTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, INDIAN_ZONE).ToShortTimeString();
             this.label.Content = indianTime;
-            this.ShowInTaskbar = false;     
+            this.ShowInTaskbar = false;
+            var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
+            this.Left = desktopWorkingArea.Right - this.Width;
+            this.Top = desktopWorkingArea.Bottom - this.Height;
         }
         
         private void rectangle_MouseDown(object sender, MouseButtonEventArgs e)
