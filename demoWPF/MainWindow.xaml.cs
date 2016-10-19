@@ -41,8 +41,8 @@ namespace demoWPF
         void myDispatcherTimer_Tick(object sender, EventArgs e)
         {
             TimeZoneInfo INDIAN_ZONE = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
-            string indianTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, INDIAN_ZONE).ToString("hh:mm:ss tt");
-            this.label.Content = indianTime;
+            string indianTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, INDIAN_ZONE).ToShortTimeString();
+            label.Content = indianTime;
         }
         private void rectangle_MouseDown(object sender, MouseButtonEventArgs e)
         {
