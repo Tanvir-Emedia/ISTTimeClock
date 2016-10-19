@@ -27,14 +27,21 @@ namespace demoWPF
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {           
-            TimeZoneInfo INDIAN_ZONE = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
-            string indianTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, INDIAN_ZONE).ToShortTimeString();
-            this.label.Content = indianTime;
+        {
+            //TimeZoneInfo INDIAN_ZONE = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+            //string indianTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, INDIAN_ZONE).ToShortTimeString();
+            //Getting the current UTC Time
+            DateTime UTCTime = System.DateTime.UtcNow;
+            //Adding the time difference 5.5 hours to the utc time
+            DateTime IndianTime = UTCTime.AddHours(5.5);
+            //Setting the value to label
+            
+            this.label.Content = IndianTime.ToString("HH:mm tt");
             this.ShowInTaskbar = false;
             var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
             this.Left = desktopWorkingArea.Right - this.Width;
             this.Top = desktopWorkingArea.Bottom - this.Height;
+            
         }
         
         private void rectangle_MouseDown(object sender, MouseButtonEventArgs e)
